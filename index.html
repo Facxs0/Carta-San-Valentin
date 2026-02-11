@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carta de invitación a San Valentín</title>
+    <style>
+      :root {
+        --rosa: #ff4f87;
+        --rosa-suave: #ffd5e3;
+        --vino: #8e1a42;
+        --fondo: #fff0f6;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(145deg, #ffe0ec, #fff7fb);
+        color: #4f1230;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+      }
+
+      .card {
+        width: min(100%, 460px);
+        background: white;
+        border-radius: 22px;
+        box-shadow: 0 12px 30px rgba(142, 26, 66, 0.2);
+        border: 2px solid var(--rosa-suave);
+        padding: 28px 22px;
+        text-align: center;
+      }
+
+      h1 {
+        margin-top: 0;
+        font-size: clamp(1.5rem, 5vw, 2rem);
+        color: var(--vino);
+      }
+
+      .pregunta {
+        font-size: 1.05rem;
+        margin-bottom: 20px;
+      }
+
+      .botones {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 18px;
+      }
+
+      button {
+        border: none;
+        border-radius: 999px;
+        padding: 12px 24px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+        touch-action: manipulation;
+      }
+
+      #btnSi {
+        background: var(--rosa);
+        color: white;
+        transform: scale(1);
+      }
+
+      #btnNo {
+        background: #f0f0f0;
+        color: #4d4d4d;
+      }
+
+      #mensaje {
+        margin-top: 14px;
+        padding: 14px;
+        border-radius: 14px;
+        background: var(--fondo);
+        border: 1px solid var(--rosa-suave);
+        display: none;
+        line-height: 1.6;
+      }
+
+      #mensaje strong {
+        color: var(--vino);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <h1>Carta de invitación a San Valentín 💌</h1>
+      <p class="pregunta">¿Quieres pasar San Valentín conmigo?</p>
+
+      <div class="botones">
+        <button id="btnSi" type="button">Sí</button>
+        <button id="btnNo" type="button">No</button>
+      </div>
+
+      <section id="mensaje" aria-live="polite"></section>
+    </main>
+
+    <script>
+      const btnSi = document.getElementById("btnSi");
+      const btnNo = document.getElementById("btnNo");
+      const mensaje = document.getElementById("mensaje");
+
+      let escala = 1;
+
+      btnNo.addEventListener("click", () => {
+        escala += 0.2;
+        btnSi.style.transform = `scale(${escala})`;
+      });
+
+      btnSi.addEventListener("click", () => {
+        mensaje.style.display = "block";
+        mensaje.innerHTML = `
+          <strong>Lugar:</strong> Mi Casa<br />
+          <strong>Hora:</strong> 3.00 PM
+          <p style="margin: 10px 0 0;">Te amo muchísimo mi amor ❤️</p>
+        `;
+      });
+    </script>
+  </body>
+</html>
