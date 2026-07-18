@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bot de pruebas Pascal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <p class="eyebrow">Pascal helper</p>
+      <h1>Bot para cargar datos de prueba</h1>
+      <p>
+        Pegá el bloque de código con <code>writeln</code> y <code>readln</code>, escribí los valores
+        que querés usar y copiá cada respuesta en el orden exacto en que el programa la pide.
+      </p>
+    </section>
+
+    <section class="grid" aria-label="Configuración del bot">
+      <article class="card">
+        <label for="pascalInput">Código Pascal</label>
+        <textarea id="pascalInput" spellcheck="false">writeln('Ingrese ISBN del libro');
+readln(p.ISBN);
+if(p.ISBN &lt;&gt; '-1')then begin
+ writeln('Ingrese numero de Prestamo');
+ readln(p.nropres);
+ writeln('Ingrese numero de socio');
+ readln(p.nrosocio);
+ writeln('Ingre el dia donde se realizo el prestamo');
+ readln(p.diapres);
+end;</textarea>
+        <div class="actions">
+          <button id="parseButton">Detectar pedidos</button>
+          <button id="clearButton" class="secondary">Limpiar</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-title-row">
+          <h2>Valores a responder</h2>
+          <span id="fieldCount" class="badge">0 campos</span>
+        </div>
+        <form id="answersForm" class="answers" autocomplete="off"></form>
+      </article>
+    </section>
+
+    <section class="card runner" aria-label="Copiado paso a paso">
+      <div>
+        <p class="eyebrow">Paso actual</p>
+        <h2 id="currentPrompt">Primero detectá los pedidos del código.</h2>
+        <p id="currentVariable" class="muted"></p>
+      </div>
+      <output id="currentAnswer" class="answer-box" aria-live="polite">—</output>
+      <div class="actions">
+        <button id="copyButton" disabled>Copiar respuesta actual</button>
+        <button id="nextButton" class="secondary" disabled>Siguiente</button>
+        <button id="copyAllButton" class="secondary" disabled>Copiar todas</button>
+      </div>
+      <p id="status" class="status" role="status"></p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
